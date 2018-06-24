@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Item, Grid } from 'semantic-ui-react'
 import SearchField from './SearchField'
 import User from './User'
+import UserProfile from './UserProfile'
 
 class UserList extends Component {
 	render() {
@@ -15,7 +16,7 @@ class UserList extends Component {
 				</Grid.Column>
 				<Grid.Column width={10}>
 					<Item.Group>
-							
+						<UserProfile />	
 					</Item.Group>	
 				</Grid.Column>
 			</Grid.Row>
