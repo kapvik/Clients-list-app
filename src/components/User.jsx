@@ -5,15 +5,16 @@ import { Item } from 'semantic-ui-react'
 
 class User extends Component {
 	render() {
-		return (
-			<Item>
-				<Item.Image src="#" alt="Client's avatar"/>
+		const users = this.props.users
+		return users.map((user, index) => (
+			<Item key={index}>
+				<Item.Image src={user.general.avatar} alt="Client's avatar"/>
 				<Item.Content verticalAlign='middle'>
-					<Item.Header as='a'>Firstname Lastname</Item.Header>
-					<Item.Description>Job title - Job company</Item.Description>
+					<Item.Header as='a'>{user.general.firstName} {user.general.lastName}</Item.Header>
+				   	<Item.Description>{user.job.title} - {user.job.company}</Item.Description>
 				</Item.Content>
 			</Item>
-		)
+		))
 	}
 }
 
