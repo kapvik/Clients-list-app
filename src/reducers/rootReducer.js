@@ -4,6 +4,7 @@ import { RECEIVE_USERS, SELECT_USER } from '../actions/action-types'
 function usersData(
 	state = {
 		users: [],
+		currentUser: null,
 		currentUserProfile: []
 	},
 	action
@@ -14,7 +15,7 @@ function usersData(
 		case SELECT_USER:
 			return Object.assign({}, state, {
 				currentUser: action.userId,
-				currentUSerProfile: state.users[action.userId]
+				currentUserProfile: state.users[action.userId]
 			})
 		default:
 			return state
