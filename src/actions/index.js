@@ -1,8 +1,13 @@
-import { RECEIVE_USERS } from './action-types'
+import { RECEIVE_USERS, SELECT_USER } from './action-types'
 
 export const receiveUsers = users =>({ 
 	type: RECEIVE_USERS, 
 	users
+})
+
+export const selectUser = userId => ({
+    type: SELECT_USER,
+    userId
 })
 
 function xhr(callback) {
@@ -20,4 +25,10 @@ export function userDataLoad() {
 	return dispatch => {
 		return xhr((response) => dispatch(receiveUsers(JSON.parse(response))))
 	}
+}
+
+export function selectedUser(userId) {
+    return dispatch => {
+        dispatch(selectUser(userId))
+    }
 }
