@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, SELECT_USER } from './action-types'
+import { RECEIVE_USERS, SELECT_USER, SEARCH_DATA } from './action-types'
 
 export const receiveUsers = users =>({ 
 	type: RECEIVE_USERS, 
@@ -8,6 +8,11 @@ export const receiveUsers = users =>({
 export const selectUser = userId => ({
     type: SELECT_USER,
     userId
+})
+
+export const searchData = searchQuery => ({
+    type: SEARCH_DATA,
+    searchQuery
 })
 
 function xhr(callback) {
@@ -31,4 +36,8 @@ export function selectedUser(userId) {
     return dispatch => {
         dispatch(selectUser(userId))
     }
+}
+
+export function searchingData(query) {
+    return dispatch => dispatch(searchData(query))
 }
