@@ -11,10 +11,8 @@ class UserList extends Component {
 		return(
 			<Grid.Row>
 				<Grid.Column width={6}>
-					<Item.Group link divided>
-						<SearchField />
-		    			<User />
-					</Item.Group>
+					<SearchField />
+		    		<User />
 				</Grid.Column>
 				<Grid.Column width={10}>
 					<Item.Group>

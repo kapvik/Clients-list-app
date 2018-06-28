@@ -33,9 +33,7 @@ export function userDataLoad() {
 }
 
 export function selectedUser(userId) {
-    return dispatch => {
-        dispatch(selectUser(userId))
-    }
+    return dispatch => dispatch(selectUser(userId))
 }
 
 export function searchingData(query) {

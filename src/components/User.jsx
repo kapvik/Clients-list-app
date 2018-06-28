@@ -12,16 +12,40 @@ class User extends Component {
 	}
 
 	render() {
-		const {users} = this.props.usersData
-		return users.map((user, index) => (
-			<Item key={index} onClick = {(e) => this.onClickUser(index)}>
-				<Item.Image src={user.general.avatar} alt="Client's avatar"/>
-				<Item.Content verticalAlign='middle'>
-					<Item.Header as='a'>{user.general.firstName} {user.general.lastName}</Item.Header>
-				   	<Item.Description>{user.job.title} - {user.job.company}</Item.Description>
-				</Item.Content>
-			</Item>
-		))
+		const {
+			users,
+			filtredData,
+			searchQuery
+		} = this.props.usersData
+
+		if (filtredData && searchQuery !== '') {
+			return (
+				<Item.Group link divided>
+					{ filtredData.map( ( item, index ) => 
+						item.length > 0 &&
+							<Item key = { index } onClick = { (e) => this.onClickUser(index) }>
+								<Item.Content verticalAlign='middle'>
+									<Item.Description>{ item.join(', ') }</Item.Description>
+								</Item.Content>
+							</Item>
+					)}
+				</Item.Group>
+			)
+		} else {
+			return (
+				<Item.Group link divided>
+					{ users.map( ( user, index ) => 
+						<Item key ={ index } onClick = { (e) => this.onClickUser(index) } >
+							<Item.Image src={ user.general.avatar } alt="Client's avatar"/>
+							<Item.Content verticalAlign='middle'>
+								<Item.Header as='a'>{ user.general.firstName } { user.general.lastName }</Item.Header>
+							   	<Item.Description>{ user.job.title } - { user.job.company }</Item.Description>
+							</Item.Content>
+						</Item>
+					)}
+				</Item.Group>
+			)
+		}
 	}
 }
 
